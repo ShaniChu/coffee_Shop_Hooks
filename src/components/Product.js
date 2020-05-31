@@ -12,14 +12,14 @@ const Product = (props) => {
       <div className="img-container p-3">
         <div className="coffeType">
           <img
-            src={img}
+            src={img.product}
             alt="coffe type"
             className="card-img-top"
             onClick={openModal(id)}
           />
           <div className="d-flex justify-content-between pb-3">
-            <h5 className="title">{title}</h5>
-            <h5 className="price">{price}$</h5>
+            <h5 className="title">{title.product}</h5>
+            <h5 className="price">{price.product}$</h5>
           </div>
         </div>
       </div>
