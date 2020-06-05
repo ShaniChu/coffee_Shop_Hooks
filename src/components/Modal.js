@@ -4,7 +4,10 @@ import FormModal from "./FormModal";
 import Buttons from "./Buttons";
 
 const Modal = () => {
-  const { modalProduct: img, title, show } = useContext(ProductContext);
+  const {
+    show,
+    modalProduct: { img, title },
+  } = useContext(ProductContext);
 
   if (!show) {
     return null;

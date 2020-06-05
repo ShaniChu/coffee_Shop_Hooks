@@ -8,7 +8,7 @@ const ProductContextProvider = (props) => {
   const [milk, setMilk] = useState(" ");
   const [sweet, setSweet] = useState(" ");
   const [products, setProducts] = useState(coffeeList);
-  const [show, setShow] = useState("true");
+  const [show, setShow] = useState(false);
   const [cart, setCart] = useState([]);
   const [crartSubTotal, setCrartSubTotal] = useState(0);
   const [cartTax, setCartTax] = useState(0);
@@ -33,23 +33,36 @@ const ProductContextProvider = (props) => {
 
   useEffect(() => {
     copyProducts();
-  });
+  }, []);
 
   const copyProducts = () => {
+    const newProducts = products.map((p) => ({ ...p }));
+    setProducts(newProducts);
+  };
+
+  /* useEffect(() => {
+    const copyProducts = () => {
+      const newProducts = products.map((p) => ({ ...p }));
+      setProducts(newProducts);
+    };
+    copyProducts();
+  }, []); //"dependencies" array tells useEffect "run when any of these change"
+*/
+  /*const copyProducts = () => {
     let tempProducts = [];
     products.forEach((item) => {
       const singleItem = { ...item };
       tempProducts = [...tempProducts, singleItem];
     });
     setProducts(tempProducts);
-  };
+  };*/
 
   function getItem(id) {
     const product = [...products].find((item) => item.id === id);
     return product;
   }
 
-  function addToCart(id) {
+  /*function addToCart(id) {
     let tempProducts = [...products];
     const index = tempProducts.indexOf(getItem(id));
     const product = tempProducts[index];
@@ -57,16 +70,31 @@ const ProductContextProvider = (props) => {
     product.count = 1;
     setCart([...cart]);
     setProducts(tempProducts);
+  }*/
+
+  function addToCart(id) {
+    //*arrays' contents can be changed even when they're const
+    //* because they're reference types, they contain pointers to other values
+    //*the array never changes, only it's content
+    const newProducts = [...products];
+    const product = newProducts.find((product) => product.id === id);
+    console.log(product);
+
+    if (product) {
+      product.count = 1;
+      setCart([...cart]);
+      setProducts(newProducts);
+    }
   }
 
   function openModal(id) {
     const modalProduct = getItem(id);
-    setShow("true");
+    setShow(true);
     setModalProduct(modalProduct);
   }
 
   function closeModal() {
-    setShow("false");
+    setShow(false);
   }
 
   function clearCart() {
