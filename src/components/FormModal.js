@@ -3,20 +3,20 @@ import { ProductContext } from "../context";
 
 const FormModal = () => {
   const sizeRadioButtons = [
-    { value_S: "small", displayName_S: "Small" },
-    { value_S: "medium", displayName_S: "Medium" },
-    { value_S: "large", displayName_S: "Large" },
+    { value: "small", displayName: "Small" },
+    { value: "medium", displayName: "Medium" },
+    { value: "large", displayName: "Large" },
   ];
   const milkRadioButtons = [
-    { value_M: "no milk", displayName_M: "No Milk" },
-    { value_M: "whole milk", displayName_M: "Whole Milk" },
-    { value_M: "soy milk", displayName_M: "Soy Milk" },
-    { value_M: "almond milk", displayName_M: "Almond Milk" },
+    { value: "no milk", displayName: "No Milk" },
+    { value: "whole milk", displayName: "Whole Milk" },
+    { value: "soy milk", displayName: "Soy Milk" },
+    { value: "almond milk", displayName: "Almond Milk" },
   ];
   const sweetRadioButtons = [
-    { value_W: "no-sugar", displayName_W: "No-Sugar" },
-    { value_W: "one spoon", displayName_W: "One Spoon" },
-    { value_W: " double-double", displayName_W: " Double-Double" },
+    { value: "no-sugar", displayName: "No-Sugar" },
+    { value: "one spoon", displayName: "One Spoon" },
+    { value: " double-double", displayName: " Double-Double" },
   ];
   const {
     sizeHandleChange,
@@ -37,20 +37,23 @@ const FormModal = () => {
           <div className="row">
             <div className="col-sm-2 pt-0">
               <h5 className="title">size</h5>
-              {sizeRadioButtons.map((value_S, displayName_S, idx) => (
+              {sizeRadioButtons.map(({ value, displayName }, idx) => (
                 <div className="form-check">
-                  <label className="form-check-label">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      id={`size_${idx}`}
-                      name="size"
-                      value={value_S}
-                      checked={size === value_S}
-                      onChange={sizeHandleChange}
-                    />
-                    {displayName_S}
-                  </label>
+                  <div key={`size-${idx}`}>
+                    <label className="form-check-label">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        id={idx}
+                        name="size"
+                        value={value}
+                        checked={size === value}
+                        onChange={sizeHandleChange}
+                      />
+
+                      {displayName}
+                    </label>
+                  </div>
                 </div>
               ))}
             </div>
@@ -61,20 +64,23 @@ const FormModal = () => {
           <div className="row">
             <div className="col-sm-10">
               <h5 className="title pt-4">milk</h5>
-              {milkRadioButtons.map((value_M, displayName_M, idy) => (
-                <div className="form-check">
-                  <label className="form-check-label">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      id={`milk_${idy}`}
-                      name="milk"
-                      value={value_M}
-                      checked={milk === value_M}
-                      onChange={milkHandleChange}
-                    />
-                    {displayName_M}
-                  </label>
+              {milkRadioButtons.map(({ value, displayName }, idy) => (
+                <div key={`size-${idy}`}>
+                  <div className="form-check">
+                    <label className="form-check-label">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        id={idy}
+                        name="milk"
+                        value={value}
+                        checked={milk === value}
+                        onChange={milkHandleChange}
+                      />
+
+                      {displayName}
+                    </label>
+                  </div>
                 </div>
               ))}
             </div>
@@ -85,22 +91,24 @@ const FormModal = () => {
           <div className="row">
             <div className="col-sm-10">
               <h5 className="title pt-4">Sweetner</h5>
-              {sweetRadioButtons.map((value_W, displayName_W, idz) => (
+              {sweetRadioButtons.map(({ value, displayName }, idz) => (
                 <div className="form-check">
-                  <label className="form-check-label">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      id={`sweet_${idz}`}
-                      name="sweet"
-                      value={value_W}
-                      checked={sweet === value_W}
-                      //onChange helps me to put what the client chose in the state
-                      onChange={sweetHandleChange}
-                    />
-                    {console.log(idz)}
-                    {displayName_W}
-                  </label>
+                  <div key={`sweet_${idz}`}>
+                    <label className="form-check-label">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        id={idz}
+                        name="sweet"
+                        value={value}
+                        checked={sweet === value}
+                        //onChange helps me to put what the client chose in the state
+                        onChange={sweetHandleChange}
+                      />
+
+                      {displayName}
+                    </label>
+                  </div>
                 </div>
               ))}
             </div>
