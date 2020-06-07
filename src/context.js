@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { coffeeList, detailProduct } from "./data";
 
 const ProductContext = React.createContext();
@@ -31,13 +31,15 @@ const ProductContextProvider = (props) => {
     setSweet(event.target.value);
   }
 
-  useEffect(() => {
-    copyProducts();
-  }, []);
+  const ProductsLoad = () => {
+    const copyProducts = useCallback(() => {
+      const newProducts = products.map((p) => ({ ...p }));
+      setProducts(newProducts);
+    }, []);
 
-  const copyProducts = () => {
-    const newProducts = products.map((p) => ({ ...p }));
-    setProducts(newProducts);
+    useEffect(() => {
+      copyProducts();
+    }, [copyProducts]);
   };
 
   /* useEffect(() => {
@@ -99,7 +101,7 @@ const ProductContextProvider = (props) => {
 
   function clearCart() {
     setCart([]);
-    copyProducts();
+    ProductsLoad();
     addTotals();
   }
 

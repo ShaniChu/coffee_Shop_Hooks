@@ -15,6 +15,12 @@ const FormModal = () => {
     { value: "almond milk", displayName: "Almond Milk" },
   ];
 
+  const sweetRadioButtons = [
+    { value: "no-sugar", displayName: "No-Sugar" },
+    { value: "one spoon", displayName: "One Spoon" },
+    { value: " double-double", displayName: " Double-Double" },
+  ];
+
   const {
     sizeHandleChange,
     milkHandleChange,
@@ -83,6 +89,30 @@ const FormModal = () => {
             </div>
           </fieldset>
         </div>
+        <fieldset className="form-group sugar">
+          <div className="row">
+            <div className="col-sm-10">
+              <h5 className="title pt-4">Sweetner</h5>
+              {sweetRadioButtons.map(({ value, displayName }, idz) => (
+                <div className="form-check">
+                  <label className="form-check-label">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      id={`sweet_${idz}`}
+                      name="sweet"
+                      value={value}
+                      checked={sweet === value}
+                      //onChange helps me to put what the client chose in the state
+                      onChange={sweetHandleChange}
+                    />
+                    {displayName}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </div>
+        </fieldset>
 
         <div className="d-flex justify-content-center py-3">
           <h4 className="px-2">Price {price} $</h4>
