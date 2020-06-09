@@ -54,7 +54,6 @@ const FormModal = () => {
                           checked={size === value}
                           onChange={sizeHandleChange}
                         />
-                        {console.log(id)}
                         {displayName}
                       </label>
                     </div>
@@ -70,19 +69,21 @@ const FormModal = () => {
               <div className="col-sm-10">
                 <h5 className="title pt-4">milk</h5>
                 {milkRadioButtons.map(({ value, displayName }, idx) => (
-                  <div className="form-check">
-                    <label className="form-check-label">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        id={`milk-${idx}`}
-                        name="milk"
-                        value={value}
-                        checked={milk === value}
-                        onChange={milkHandleChange}
-                      />
-                      {displayName}
-                    </label>
+                  <div key={`milk-${idx}`}>
+                    <div className="form-check">
+                      <label className="form-check-label">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          id={`milk-${idx}`}
+                          name="milk"
+                          value={value}
+                          checked={milk === value}
+                          onChange={milkHandleChange}
+                        />
+                        {displayName}
+                      </label>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -93,21 +94,23 @@ const FormModal = () => {
           <div className="row">
             <div className="col-sm-10">
               <h5 className="title pt-4">Sweetner</h5>
-              {sweetRadioButtons.map(({ value, displayName }, idz) => (
-                <div className="form-check">
-                  <label className="form-check-label">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      id={`sweet_${idz}`}
-                      name="sweet"
-                      value={value}
-                      checked={sweet === value}
-                      //onChange helps me to put what the client chose in the state
-                      onChange={sweetHandleChange}
-                    />
-                    {displayName}
-                  </label>
+              {sweetRadioButtons.map(({ value, displayName }, idx) => (
+                <div key={`sweet-${idx}`}>
+                  <div className="form-check">
+                    <label className="form-check-label">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        id={`sweet_${idx}`}
+                        name="sweet"
+                        value={value}
+                        checked={sweet === value}
+                        //onChange helps me to put what the client chose in the state
+                        onChange={sweetHandleChange}
+                      />
+                      {displayName}
+                    </label>
+                  </div>
                 </div>
               ))}
             </div>
