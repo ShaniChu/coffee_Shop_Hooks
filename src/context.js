@@ -42,50 +42,23 @@ const ProductContextProvider = (props) => {
     }, [copyProducts]);
   };
 
-  /* useEffect(() => {
-    const copyProducts = () => {
-      const newProducts = products.map((p) => ({ ...p }));
-      setProducts(newProducts);
-    };
-    copyProducts();
-  }, []); //"dependencies" array tells useEffect "run when any of these change"
-*/
-  /*const copyProducts = () => {
-    let tempProducts = [];
-    products.forEach((item) => {
-      const singleItem = { ...item };
-      tempProducts = [...tempProducts, singleItem];
-    });
-    setProducts(tempProducts);
-  };*/
-
   function getItem(id) {
     const product = [...products].find((item) => item.id === id);
     return product;
   }
-
-  /*function addToCart(id) {
-    let tempProducts = [...products];
-    const index = tempProducts.indexOf(getItem(id));
-    const product = tempProducts[index];
-    console.log(product);
-    product.count = 1;
-    setCart([...cart]);
-    setProducts(tempProducts);
-  }*/
 
   function addToCart(id) {
     //*arrays' contents can be changed even when they're const
     //* because they're reference types, they contain pointers to other values
     //*the array never changes, only it's content
     const newProducts = [...products];
-    const product = newProducts.find((product) => product.id === id);
+    const product = newProducts.find((item) => item.id === id);
     console.log(product);
 
     if (product) {
       product.count = 1;
-      setCart([...cart]);
       setProducts(newProducts);
+      setCart((cart) => [...cart, { product }]);
     }
   }
 
