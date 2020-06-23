@@ -91,6 +91,7 @@ footer p {
 .shoppingCart {
   background-color: blanchedalmond;
   height: 100%;
+  background-size: cover;
 }
 
 .btn-black {
@@ -99,16 +100,15 @@ footer p {
   font-size: 0.8rem !important;
   color: black;
   border-radius: 0 !important;
-  border: 0.3rem solid black !important;
+  border: 0.1rem solid black !important;
 }
 
 .btn-black:hover {
-  background: blue !important;
-  color: blue !important;
+  background: #ffc107 !important;
 }
 
 .cart-icon {
   cursor: pointer;
   font-size: 1.2rem;
-  color: darkgoldenrod;
+  color: #ffc107;
 }

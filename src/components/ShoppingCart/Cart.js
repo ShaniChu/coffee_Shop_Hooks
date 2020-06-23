@@ -11,7 +11,7 @@ const Cart = () => {
   if (cart.length > 0) {
     return (
       <div className="shoppingCart">
-        <h2 className="text-capitalize text-center">your cart</h2>
+        <h2 className="text-capitalize text-center py-4">your cart</h2>
         <CartColumns />
         <CartList />
         <CartTotals />

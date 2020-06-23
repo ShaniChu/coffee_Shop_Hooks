@@ -10,7 +10,7 @@ const ProductContextProvider = (props) => {
   const [products, setProducts] = useState(coffeeList);
   const [show, setShow] = useState(false);
   const [cart, setCart] = useState([]);
-  const [crartSubTotal, setCrartSubTotal] = useState(0);
+  const [cartSubTotal, setCartSubTotal] = useState(0);
   const [cartTax, setCartTax] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
   const [modalProduct, setModalProduct] = useState(detailProduct);
@@ -53,12 +53,11 @@ const ProductContextProvider = (props) => {
     //*the array never changes, only it's content
     const newProducts = [...products];
     const product = newProducts.find((item) => item.id === id);
-    console.log(product);
 
     if (product) {
       product.count = 1;
       setProducts(newProducts);
-      setCart((cart) => [...cart, { product }]);
+      setCart((cart) => [...cart, product]);
     }
   }
 
@@ -80,10 +79,10 @@ const ProductContextProvider = (props) => {
 
   function increment(id) {
     //temp cart values, [...cart]
-    let tempCart = setCart([...cart]);
+    let tempCart = [...cart];
     //finding the product the client selected in the cart (pressed on the + sign)
-    const selectedProduct = tempCart.find((item) => item.id === id);
-    //We need to find the item specific index
+    const selectedProduct = tempCart.find((product) => product.id === id);
+    //We need to find the product specific index
     const index = tempCart.indexOf(selectedProduct);
     const product = tempCart[index];
     product.count++;
@@ -94,9 +93,9 @@ const ProductContextProvider = (props) => {
 
   function decrement(id) {
     //temp cart values
-    let tempCart = setCart([...cart]);
+    let tempCart = [...cart];
     //finding the product the client selected in the cart (pressed on the + sign)
-    const selectedProduct = tempCart.find((item) => item.id === id);
+    const selectedProduct = tempCart.find((product) => product.id === id);
     //We need to find the item specific index
     const index = tempCart.indexOf(selectedProduct);
     const product = tempCart[index];
@@ -115,10 +114,9 @@ const ProductContextProvider = (props) => {
     let tempProducts = [...products];
     let tempCart = [...cart];
 
-    tempCart = tempCart.filter((item) => item.id !== id);
-    const index = tempProducts.indexOf(this.getItem(id));
+    tempCart = tempCart.filter((product) => product.id !== id);
+    const index = tempProducts.indexOf(getItem(id));
     let removeProduct = tempProducts[index];
-    removeProduct.inCart = false;
     removeProduct.count = 0;
     removeProduct.total = 0;
 
@@ -133,7 +131,7 @@ const ProductContextProvider = (props) => {
     const tempTax = subTotal * 0.13;
     const tax = parseFloat(tempTax.toFixed(2));
     const total = subTotal + tax;
-    setCrartSubTotal(subTotal);
+    setCartSubTotal(subTotal);
     setCartTax(tax);
     setCartTotal(total);
   }
@@ -149,7 +147,7 @@ const ProductContextProvider = (props) => {
         cart,
         cartTotal,
         cartTax,
-        crartSubTotal,
+        cartSubTotal,
         modalProduct,
         addToCart,
         openModal,

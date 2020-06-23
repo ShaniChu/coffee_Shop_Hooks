@@ -7,7 +7,7 @@ const CartList = () => {
   return (
     <div className="container-fluid">
       {cart.map((item) => {
-        return <CartItem key={item.id} item={item} />;
+        return <CartItem item={item} key={item.id} />;
       })}
     </div>
   );

@@ -27,7 +27,7 @@ const CartItem = ({ item }) => {
         <span className="d-lg-none">price: </span>
         {price}$
       </div>
-      <div className="col-10 mx-auto col-lg-2 my-2 my-lg-2 py-2">
+      <div className="col-10 mx-auto col-lg-2 py-2">
         <div className="d-flex justify-content-center">
           <div>
             <span className="btn btn-black mx-2" onClick={() => decrement(id)}>
