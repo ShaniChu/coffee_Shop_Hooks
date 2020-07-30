@@ -101,13 +101,13 @@ const ProductContextProvider = (props) => {
     const product = tempCart[index];
     product.count--;
 
-    if (product.count === 0) {
+    if (product.count == 0) {
       removeItem(id);
     } else {
       product.total = product.count * product.price;
     }
     setCart([...tempCart]);
-    addTotals();
+    addTotals(product.total);
   }
 
   function removeItem(id) {
@@ -125,13 +125,11 @@ const ProductContextProvider = (props) => {
     addTotals();
   }
 
-  function addTotals() {
-    let subTotal = 0;
-    [...cart].map((item) => (subTotal += item.total));
+  function addTotals(subTotal) {
+    setCartSubTotal([...cart].map((item) => (subTotal += item.total)));
     const tempTax = subTotal * 0.13;
     const tax = parseFloat(tempTax.toFixed(2));
     const total = subTotal + tax;
-    setCartSubTotal(subTotal);
     setCartTax(tax);
     setCartTotal(total);
   }

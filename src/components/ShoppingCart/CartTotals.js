@@ -23,6 +23,7 @@ const CartTotals = () => {
             <h5>
               <span className="text-title">subtotal:</span>
               <strong>$ {cartSubTotal}</strong>
+              {console.log(cartSubTotal)}
             </h5>
             <h5>
               <span className="text-title">tax:</span>

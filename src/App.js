@@ -8,6 +8,8 @@ import Modal from "./components/Modal";
 import { ProductContextProvider } from "./context";
 import Cart from "./components/ShoppingCart/Cart";
 import ProductList from "./components/ProductList";
+import { StripeProvider, Elements } from "react-stripe-elements";
+import PaymentForm from "./PaymentForm";
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
         </Switch>
         <Modal />
       </div>
+      <StripeProvider apiKey="">
+        <Elements></Elements>
+      </StripeProvider>
     </ProductContextProvider>
   );
 }
