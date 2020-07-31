@@ -1,3 +1,0 @@
-import React from "react";
-import {CardElement, injectStripe, ReactStripeElements } from "react-stripe-elements"
-
