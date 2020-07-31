@@ -8,8 +8,13 @@ import Modal from "./components/Modal";
 import { ProductContextProvider } from "./context";
 import Cart from "./components/ShoppingCart/Cart";
 import ProductList from "./components/ProductList";
-import { Elements, StripeProvider } from "@strip/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 import PaymentForm from "./components/ShoppingCart/PaymentForm";
+
+const stripePromise = loadStripe(
+  "pk_test_51H9b9iFKY9fxobThOkCcW9UQ0k6qll0uJcPLTUDETRqCErRhJYiCfFkYrCRt5fiuFvAjLZUVG8k2JymD8RKkHeXX00vmYH72NB"
+);
 
 function App() {
   return (
@@ -23,11 +28,9 @@ function App() {
         </Switch>
         <Modal />
       </div>
-      <StripeProvider apiKey="pk_test_51H9b9iFKY9fxobThOkCcW9UQ0k6qll0uJcPLTUDETRqCErRhJYiCfFkYrCRt5fiuFvAjLZUVG8k2JymD8RKkHeXX00vmYH72NB">
-        <Elements>
-          <PaymentForm />
-        </Elements>
-      </StripeProvider>
+      <Elements stripe={stripePromise}>
+        <PaymentForm />
+      </Elements>
     </ProductContextProvider>
   );
 }
