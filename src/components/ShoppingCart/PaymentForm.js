@@ -13,7 +13,7 @@ export default function PaymentForm() {
   const elements = useElements();
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
-  const [processing, setProccessing] = useState("");
+  const [processing, setProcessing] = useState("");
   const [disabled, setDisabled] = useState("true");
   const [clientSecret, setClientSecret] = useState("");
   useEffect (() => {
@@ -23,7 +23,7 @@ export default function PaymentForm() {
           headers:{
               "Content-Type": "application/json"
           },
-          body:JSON.stringify({items: [{id: /*product*/}]})
+          body:JSON.stringify({items: [{id: {item}}]})
       })
       .then(res => {
           return res.json();
@@ -85,7 +85,7 @@ export default function PaymentForm() {
 //confirm the card payment
     if (payload.error) {
       setError (`Payment failed ${payload.error.message}`)
-      setProccessing(false);
+      setProcessing(false);
     }else{
         setError(null);
         setProccessing(false);
@@ -93,9 +93,6 @@ export default function PaymentForm() {
     }
   };
  
-  if (!showCard) {
-    return null;
-  } else {
     return (
       <div className="modal-box payment">
         <div className="container">
@@ -142,4 +139,3 @@ export default function PaymentForm() {
       </div>
     );
   }
-}
