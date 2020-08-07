@@ -10,11 +10,13 @@
     "@testing-library/user-event": "^7.1.2",
     "@types/react-stripe-elements": "^6.0.4",
     "@types/stripe": "^7.13.24",
+    "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+    "react-stripe-checkout": "^2.6.3",
     "react-stripe-elements": "^6.1.2",
     "react-uuid": "^1.0.2",
     "stripe": "^8.80.0"

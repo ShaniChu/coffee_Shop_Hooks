@@ -9,6 +9,7 @@ const ProductContextProvider = (props) => {
   const [sweet, setSweet] = useState(" ");
   const [products, setProducts] = useState(coffeeList);
   const [show, setShow] = useState(false);
+  const [showCard, setShowCard] = useState(false);
   const [cart, setCart] = useState([]);
   const [cartSubTotal, setCartSubTotal] = useState(0);
   const [cartTax, setCartTax] = useState(0);
@@ -65,6 +66,14 @@ const ProductContextProvider = (props) => {
     const modalProduct = getItem(id);
     setShow(true);
     setModalProduct(modalProduct);
+  }
+
+  function openPayment() {
+    setShowCard(true);
+  }
+
+  function closePayment() {
+    setShowCard(false);
   }
 
   function closeModal() {
@@ -141,6 +150,7 @@ const ProductContextProvider = (props) => {
         milk,
         size,
         show,
+        showCard,
         products,
         cart,
         cartTotal,
@@ -150,6 +160,8 @@ const ProductContextProvider = (props) => {
         addToCart,
         openModal,
         closeModal,
+        openPayment,
+        closePayment,
         increment,
         decrement,
         removeItem,

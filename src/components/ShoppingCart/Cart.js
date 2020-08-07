@@ -6,7 +6,7 @@ import CartList from "./CartList";
 import CartTotals from "./CartTotals";
 
 const Cart = () => {
-  const { cart } = useContext(ProductContext);
+  const { cart, openPayment } = useContext(ProductContext);
 
   if (cart.length > 0) {
     return (
@@ -15,6 +15,9 @@ const Cart = () => {
         <CartColumns />
         <CartList />
         <CartTotals />
+        <button className="pay" onClick={() => openPayment()}>
+          Check Out
+        </button>
       </div>
     );
   } else {
