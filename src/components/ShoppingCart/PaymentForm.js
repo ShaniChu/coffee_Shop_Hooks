@@ -102,6 +102,8 @@ export default function PaymentForm() {
               className="col-8 mx-auto col-md-6 col-lg-4 items-center text-capitalize"
             >
               <form className="payment-form" id="payment-form" onSubmit={handleSubmit}>
+              <form className="Form" onSubmit={handleSubmit}>
+                <BillingDetailsFields />
                 <CardElement id="card-element" options={cardStyle} onChange={handleChange}/>
                 <button id="submit" className="pay" disabled={processing || disabled || succeded}>
                   <span id="button-text">
