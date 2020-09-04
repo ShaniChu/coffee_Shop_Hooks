@@ -1,6 +1,7 @@
 import React, {useState, useContext, useEffect } from "react";
 import { ProductContext } from "../../context";
 import { Link } from "react-router-dom";
+import {BillingDetailsFields} from "./BillingDetailsFields";
 import {
   CardElement,
   useStripe,
@@ -135,9 +136,10 @@ export default function PaymentForm() {
                   </button>
                 </Link>
               </form>
-            </div>
+            </form>
           </div>
         </div>
+      </div>
       </div>
     );
   }
