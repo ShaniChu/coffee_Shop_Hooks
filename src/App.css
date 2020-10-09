@@ -79,7 +79,7 @@ a:hover {
 }
 
 /*checkout*/
-#root {
+/*#root {
   display: flex;
   align-items: center;
 }
@@ -144,7 +144,7 @@ input {
   margin-bottom: 32px;
 }
 /* Buttons and links */
-.pay {
+/*.pay {
   background: #5469d4;
   font-family: Arial, sans-serif;
   color: #ffffff;
@@ -165,9 +165,9 @@ input {
 .pay:disabled {
   opacity: 0.5;
   cursor: default;
-}
+}*/
 /* spinner/processing state, errors */
-.spinner,
+/*.spinner,
 .spinner:before,
 .spinner:after {
   border-radius: 50%;
@@ -228,7 +228,7 @@ input {
   form {
     width: 80vw;
   }
-}
+}*/
 
 footer {
   color: white;
