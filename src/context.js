@@ -110,7 +110,7 @@ const ProductContextProvider = (props) => {
     const product = tempCart[index];
     product.count--;
 
-    if (product.count == 0) {
+    if (product.count === 0) {
       removeItem(id);
     } else {
       product.total = product.count * product.price;
